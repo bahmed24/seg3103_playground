@@ -6,6 +6,7 @@ class DateTest {
 
 
 
+  
   @Test
   void nextDate_tc11() {
     Date today = new Date(3453, 1, 30);
@@ -38,6 +39,27 @@ class DateTest {
   void nextDate_tc15() {
     Date today = new Date(3456, 12, 31);
     Date expectedTomorrow = new Date(3457, 1, 1);
+    assertEquals(expectedTomorrow, today.nextDate());
+  }
+
+  @Test
+  void nextDate_tc15() {
+    Date today = new Date(3456, 12, 31);
+    Date expectedTomorrow = new Date(3457, 1, 1);
+    assertEquals(expectedTomorrow, today.nextDate());
+  }
+
+  @Test
+  void nextDate_tc15() {
+    Date today = new Date(2020, 2, 29);
+    Date expectedTomorrow = new Date(2020, 3, 1);
+    assertEquals(expectedTomorrow, today.nextDate());
+  }
+
+  @Test
+  void nextDate_tc15() {
+    Date today = new Date(2021, 2, 28);
+    Date expectedTomorrow = new Date(2021, 3, 1);
     assertEquals(expectedTomorrow, today.nextDate());
   }
 
@@ -80,5 +102,36 @@ class DateTest {
       () -> new Date(1975, 6, -50)
     );
   }
+
+  @Test
+  void nextDate_invalid_tc22() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2020, 5, 35)
+    );
+  }
+
+  @Test
+  void nextDate_invalid_tc23() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(1960, 6, 31)
+    );
+  }
+
+  @Test
+  void nextDate_invalid_tc21() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2000, 2, 30)
+    );
+  }
+
+  @Test
+  void date_toString() {
+    Date today = new Date(3453, 1, 30);
+    assertEquals(today.toString(), "3453/1/30");
+    );
+  }  
 
 }
