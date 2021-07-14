@@ -76,6 +76,37 @@ class ExampleSeleniumTest {
     assertEquals(expected, getWords(actual)[0]);
   }
 
+  @Test
+  public void test3() {
+    // Testing search functionality
+    WebElement searchButton = driver.findElement(By.id("searchBtn"));
+    searchButton.click();
+    String expected = "Core Servlets and JavaServer Pages 2nd Edition (Volume 1)	";
+    WebElement elem = driver.findElement(By.id("title-hall001"));
+    String actual = elem.getText();
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void test4() {
+    // Testing successfully adding a book
+    driver.get("http://localhost:8080/admin");
+    WebDriverWait wait = new WebDriverWait(driver, 60);
+    driver.findElement(By.id("loginId")).sendKeys("admin");
+    driver.findElement(By.id("loginPassword")).sendKeys("password");
+    driver.findElement(By.id("loginBtn")).click();
+    WebDriverWait wait = new WebDriverWait(driver, 60);
+    driver.findElement(By.id("addBook-category")).sendKeys("sports");
+    driver.findElement(By.id("addBook-title")).sendKeys("Fifa World Cup");
+    driver.findElement(By.id("addBook-id")).sendKeys("142536");
+    driver.findElement(By.id("addBook-authors")).sendKeys("Cristiano Ronaldo");
+    driver.findElement(By.id("longDescription")).sendKeys("My journey in the 2018 world cup in Russia.");
+    driver.findElement(By.id("cost")).sendKeys("20");
+    driver.find_element_by_xpath("//*[@id="addBook-form"]/button").click();
+    String expectedFeedback = "Successfully added book";
+    String actualFeedback = driver.findElement(By.id("cost")).getText();
+    assertEquals(expectedFeedback, actualFeedback);
+
   private String[] getWords(String s) {
     return s.split("\\s+");
   }
