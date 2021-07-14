@@ -7,7 +7,7 @@ class TicTest {
   @Test
   void TestFizzBuzz() {
     Fizz fizz = new Fizz(4);
-    String expectedResult = "1 2 Fizz Buzz";
+    String expectedResult = "1 2 Fizz 4";
     String actualResult = fizz.fizzBuzz();
     assertEquals(expectedResult, actualResult);
   }
