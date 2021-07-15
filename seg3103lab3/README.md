@@ -34,11 +34,11 @@ We notice that the 3 first if statements were not fully covered. We also see tha
 ### Additional Tests for Date
 
 Added 6 additional test to cover the missing statements:
-![Date additional tests commit](https://github.com/bahmed24/seg3103_playground/commit/f354cc166097ea6e4865a7d479717af58f99064f#diff-4743854a394be38c493a42a17c6659a00a433b65f80a9856f9f29cdea172e237)
+[Date additional tests commit](https://github.com/bahmed24/seg3103_playground/commit/f354cc166097ea6e4865a7d479717af58f99064f#diff-4743854a394be38c493a42a17c6659a00a433b65f80a9856f9f29cdea172e237)
 
 For some reason, the coverage tool doesn't update the coverage to include the new tests! Tried re-running it different times and the results are just not updating!
 
 ### Refactoring Date
 
 Refactored date.java:
-![Date refactoring commit](https://github.com/bahmed24/seg3103_playground/commit/eb7339280534a65b1e4ecd1d59f25c30cc9825bd#diff-4743854a394be38c493a42a17c6659a00a433b65f80a9856f9f29cdea172e237)
+[Date refactoring commit](https://github.com/bahmed24/seg3103_playground/commit/eb7339280534a65b1e4ecd1d59f25c30cc9825bd#diff-4743854a394be38c493a42a17c6659a00a433b65f80a9856f9f29cdea172e237)
