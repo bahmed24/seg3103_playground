@@ -106,9 +106,16 @@ public class Date {
 	 */
 	private boolean isEndOfMonth() {
 		boolean leap = isLeapYear();
-		if (day == 31 || (day == 30 && isThirtyDayMonth()) ||
-				(this.month == 2 && ((day == 29 && leap) || (day == 28 && !leap))))
+		if (day == 31){
 			return true;
+		} else if (day == 30 && isThirtyDayMonth()){
+			return true;
+		}
+		else if (this.month == 2 && (day == 29 && leap)){
+			return true;
+		} else if (this.month == 2 && (day == 28 && !leap)){
+			return true;
+		}
 		else return false;
 	}
 
@@ -126,10 +133,15 @@ public class Date {
 	 * A leap year is divisible by 4 unless it is a century year. In that case, it must be divisible by 400.
 	 */
 	public boolean isLeapYear() {
-		if (year % 100 == 0) {
-			return year % 400 == 0;
+		if (year % 4 != 0) {
+			return false;
+		} else if (year % 400 == 0) {
+			return true;
+		} else if (year % 100 == 0) {
+			return false;
+		} else {
+			return true;
 		}
-		return year % 4 == 0;
 	}
 
 	public String toString() {
