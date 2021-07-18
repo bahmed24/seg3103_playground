@@ -3,7 +3,7 @@ defmodule Grades.Calculator do
     avg_homework = avg(%{homework: homework})
     avg_labs = avg(%{labs: labs})
 
-    mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+    mark = calculate_grade(%{avg_homework:avg_homework, avg_exams:avg_exam, num_labs:num_labs})
     round(mark * 100)
   end
 
@@ -22,7 +22,7 @@ defmodule Grades.Calculator do
     if (failed_to_participate(%{avg_labs: avg_labs, avg_exams:avg_exams, num_labs:num_labs})) do
       "EIN"
     else
-      mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+      mark = calculate_grade(%{avg_homework:avg_homework, avg_exams:avg_exam, num_labs:num_labs})
 
       cond do
         mark > 0.895 -> "A+"
@@ -55,7 +55,7 @@ defmodule Grades.Calculator do
     if (failed_to_participate(%{avg_labs: avg_labs, avg_exams:avg_exams, num_labs:num_labs})) do
       0
     else
-      mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+      mark = calculate_grade(%{avg_homework:avg_homework, avg_exams:avg_exam, num_labs:num_labs})
 
       cond do
         mark > 0.895 -> 10
@@ -83,6 +83,10 @@ defmodule Grades.Calculator do
 
   def failed_to_participate(%{avg_homework:avg_homework, avg_exams:avg_exam, num_labs:num_labs}) do
     avg_homework < 0.4 || avg_exams < 0.4 || num_labs(labs) < 3
+  end
+
+  def calculate_grade(%{avg_homework:avg_homework, avg_exams:avg_exam, num_labs:num_labs}) do
+    0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
   end
 
 end
