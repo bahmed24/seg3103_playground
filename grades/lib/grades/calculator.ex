@@ -12,12 +12,10 @@ defmodule Grades.Calculator do
 
     avg_labs = avg(%{labs: labs})
 
-    avg_exams = (midterm + final) / 2
+    avg_exams = avg_exams(%{midterm: midterm, final: final})
 
-    num_labs =
-      labs
-      |> Enum.reject(fn mark -> mark < 0.25 end)
-      |> Enum.count()
+    num_labs = check_num_labs()
+      
 
     if (failed_to_participate(%{avg_labs: avg_labs, avg_exams:avg_exams, num_labs:num_labs})) do
       "EIN"
@@ -45,12 +43,9 @@ defmodule Grades.Calculator do
 
     avg_labs = avg(%{labs: labs})
 
-    avg_exams = (midterm + final) / 2
+    avg_exams = avg_exams(%{midterm: midterm, final: final})
 
-    num_labs =
-      labs
-      |> Enum.reject(fn mark -> mark < 0.25 end)
-      |> Enum.count()
+    num_labs = check_num_labs()
 
     if (failed_to_participate(%{avg_labs: avg_labs, avg_exams:avg_exams, num_labs:num_labs})) do
       0
@@ -89,4 +84,13 @@ defmodule Grades.Calculator do
     0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
   end
 
+  def avg_exams(%{midterm: midterm, final: final}) do
+    (midterm + final) / 2
+  end
+
+  def check_num_labs(%{labs: labs}) do
+    labs
+      |> Enum.reject(fn mark -> mark < 0.25 end)
+      |> Enum.count()
+  end
 end
