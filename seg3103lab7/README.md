@@ -9,16 +9,13 @@
 | Team | Andrew Forward 1484511<br>Ayana Forward 9021000 |
 
 ## Code compiling and running
-![Calculator code compiling and running](calculator-app.png)
+![Calculator code compiling and running](Calculator-app.png)
 
 ## Run SpotBugs
 ![SpotBugs running](calculator-code-running.png)
 
 ## SpotBugs linked to calculator: bugs report
-![Calculator bugs report](Calculator bugs report.png)
-
-## Output of "java -jar ./target/BookstoreApp-0.1.0.jar"
-![java -jar ./target/BookstoreApp-0.1.0.jar](mvn-jar.png)
+![Calculator bugs report](Calculator-bugs-report.png)
 
 ## Result analysis
 
@@ -31,6 +28,3 @@
     - Switch statement: It seems that the default case in the switch block switch is missing, this can be fixed by implementing a default case.
     - Useless condition x3: This condition always produces the same result as the value of the involved variable that was narrowed before. In this situation, we can refactor the conditions to avoid any duplications. E.g: if i>7 ... to cover up all the cases where i is greater than or equal to 8. From there we can cover up the smaller condition: else if i>2 to cover up the condition where i is between 3 and 7.
     - Useless condition for morenums: At that point its gonna be true so it could be just removed and move directly to the next if statement.
-
-
-
