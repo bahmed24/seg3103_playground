@@ -25,4 +25,4 @@ We noticed that with the stub functions, the letter, numeric and precent grades 
 [4 Missing Tests](https://github.com/bahmed24/seg3103_playground/commit/caa1bf5dcabc61863128b9d57b7c388ad1f00523)
 
 ### Passing test
-![passing tests](assets/passing-tests.png)
+![passing tests](assets/passing-tests.jpg)
